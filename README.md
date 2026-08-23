@@ -37,6 +37,7 @@ You'll need **Python** version 3.9+ installed
    
    
 4. **Install the dependencies:**
+Copy/paste in terminal:
    
    pip install -r requirements.txt
    
