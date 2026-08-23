@@ -50,14 +50,14 @@ def _read_dataframe():
 
 
 def load_telemetry():
-    """Return telemetry rows as JSON-safe dicts (NaN becomes None)."""
+    """Return telemetry rows"""
     df = _read_dataframe()
     df = df.astype(object).where(pd.notnull(df), None)
     return df.to_dict(orient="records")
 
 
 def _max_with_timestamp(df, column):
-    """Find where `column` peaks and return its value + timestamp."""
+    """Find where column peaks and return its value + timestamp."""
     series = df[column]
     if not series.notna().any():
         return None
@@ -69,7 +69,7 @@ def _max_with_timestamp(df, column):
 
 
 def load_summary():
-    """Flight highlights: peak readings, plus liftoff/apogee/landing times."""
+    """Flight highlights peak readings +liftoff/apogee/landing times."""
     df = _read_dataframe()
 
     max_acceleration = _max_with_timestamp(df, "ACCEL_MAGNITUDE")
@@ -128,7 +128,7 @@ def api_telemetry():
 
 @app.route("/api/summary")
 def api_summary():
-    """Return flight-level summary stats (peaks and event timestamps)."""
+    """Return flight summary stats """
     if not os.path.exists(CSV_PATH):
         return jsonify({"error": "Can't find telemetry.csv."}), 404
 
