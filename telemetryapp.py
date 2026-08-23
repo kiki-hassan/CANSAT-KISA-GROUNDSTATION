@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 CSV_PATH = os.path.join(os.path.dirname(__file__), "telemetry.csv")
 
-# Sea-level pressure, the reference point for estimating altitude from air pressure.
+# sea to air level pressure in pascals
 SEA_LEVEL_PRESSURE_PA = 101325.0
 
 # Acceleration above this (~2x gravity) counts as liftoff.
@@ -28,7 +28,7 @@ def _read_dataframe():
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    # (0, 0) means no GPS fix, not a real spot — treat it as missing.
+    # (0, 0) means no GPS fix, not a real spot
     gps_dropout = (df["GPS_LATITUDE"] == 0) & (df["GPS_LONGITUDE"] == 0)
     df.loc[gps_dropout, ["GPS_LATITUDE", "GPS_LONGITUDE", "GPS_ALTITUDE"]] = float("nan")
 

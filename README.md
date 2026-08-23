@@ -91,23 +91,32 @@ groundstation/
 
 ## Design decisions & assumptions
 
-
-
-- **This groundstation is for a finished flight** Every time the page loads, it reads the
-  whole CSV file from the start. It doesn't watch for new rows being added. A real live version
-  would need to keep checking for new data as it comes in.
+- **This groundstation is for a finished flight, not a live one.** Every time the page loads, it
+  reads the whole CSV file from the start — it doesn't watch for new rows being added.
 
 - **A GPS reading of exactly (0, 0) means "no signal."** The app treats that as missing data
   instead of a real location, since no real flight is actually going to land on that exact spot.
   This is why you might sometimes see a gap in the GPS chart.
 
 - **Liftoff is just a guess based on acceleration.** The app looks for the first moment
-  acceleration passes 20 m/s² (about 2 times gravity) and calls that liftoff. 
+  acceleration passes 20 m/s² (about 2 times gravity) and calls that liftoff.
 
 - **Altitude is shown two different ways.** One line is the GPS altitude reading. The other
-  is an estimate calculated from air pressure. Showing both lets you compare them and spot any sources of error
+  is an estimate calculated from air pressure. Showing both lets you compare them and spot any
+  sources of error.
+
+- **Gyro magnitude is calculated but not graphed.** It still shows up in the Max Angular Velocity
+  stat card, but unlike acceleration magnitude, it doesn't trigger any flight event, so plotting
+  it as a fourth line on the Gyroscope chart was just clutter.
+
+- **Every chart's x-axis stays in sync.** Zoom or pan on one chart and every other chart jumps to
+  that same time window, so you're always comparing the same slice of the flight across all the
+  sensors.
 
 - **Missing or broken readings show up as blank, not zero.** If a value is missing or isn't a
-  real number, the app leaves it blank instead of guessing or dropping it. 
+  real number, the app leaves it blank instead of guessing or dropping it.
+
+- **One flight, one CSV file.** There's no flight picker or database — it always reads whatever's
+  sitting in `telemetry.csv`.
 
 
