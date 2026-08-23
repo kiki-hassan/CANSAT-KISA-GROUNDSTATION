@@ -65,18 +65,18 @@ pytest
 
 ## How the project is put together
 
-├── telemetryapp.py        reads the CSV and computes the derived columns
-├── requirements.txt      The packages you need installed to run this
-├── README.md             This file
-├── telemetry.csv         Sample flight data
-├── test_telemetryapp.py  Pytest checks for the backend
-├── templates/
-│   └── index.html        The frontend of the groundstation
-└── static/
-    ├── css/
-    │   └── style.css     The frontend styling
-    └── js/
-        └── app.js        the frontend logic — fetches the data and builds the graphs
+- telemetryapp.py        reads the CSV and computes the derived columns
+-  requirements.txt      The packages you need installed to run this
+- README.md             This file
+- telemetry.csv         Sample flight data
+- test_telemetryapp.py  Pytest checks for the backend
+  - templates/
+   - index.html        The frontend of the groundstation
+- static/
+    - css/
+       - style.css     The frontend styling
+    - js/
+        - app.js        the frontend logic. It grabs the data and builds the graphs
 ```
 
 
