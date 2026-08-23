@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CanSat Ground Station</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Welcome to Kisa's Groundstation :)</h1>
+  </header>
+
+  <main>
+    <p id="status">Loading telemetry data...</p>
+
+    <div class="summary-grid summary-grid--top" id="summaryTop"></div>
+    <div class="summary-grid summary-grid--bottom" id="summaryBottom"></div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Accelerometer</h2>
+        <div class="controls" id="controls-accel"></div>
+      </div>
+      <div class="chart-hint">
+        <span class="chart-hint-label">INSTRUCTIONS:</span>
+        <ul>
+          <li>Scroll or pinch to zoom</li>
+          <li>Drag to pan</li>
+          <li>Click a channel pill to hide it</li>
+        </ul>
+      </div>
+      <div class="chart-box"><canvas id="accelChart"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Gyroscope</h2>
+        <div class="controls" id="controls-gyro"></div>
+      </div>
+      <div class="chart-box"><canvas id="gyroChart"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Barometric Pressure</h2>
+        <div class="controls" id="controls-pressure"></div>
+      </div>
+      <div class="chart-box"><canvas id="pressureChart"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Estimated Barometric Pressure vs GPS Altitude</h2>
+        <div class="controls" id="controls-altitude"></div>
+      </div>
+      <div class="chart-box"><canvas id="altitudeChart"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Power (Battery)</h2>
+        <div class="controls" id="controls-power"></div>
+      </div>
+      <div class="chart-box"><canvas id="powerChart"></canvas></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>GPS Position</h2>
+        <div class="controls" id="controls-gps"></div>
+      </div>
+      <div class="chart-box"><canvas id="gpsChart"></canvas></div>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
