@@ -60,8 +60,8 @@ STEPS: go back to the same terminal you used to start the server then type:
 pytest
 
 
-- Pytest will run each test and print a
-`.` for every check that passed or an `F` for one that failed.
+- Pytest will run each test and print a dot ('.')
+ for every check that passed or an F for one that failed.
 
 ## How the project is put together
 
