@@ -4,9 +4,9 @@ Hi I'm Kisa! This is my groundstation prototype.
 
 ## What my prototype includes
 
-A Flask backend that serves flight telemetry as JSON, a summary panel of flight highlights, and
-six interactive, zoom-synced charts covering acceleration, gyroscope, pressure/altitude, power,
-and GPS — plus a test suite covering the backend logic.
+A Flask backend that serves flight telemetry as JSON, a summary panel of flight highlights,
+six charts covering acceleration, gyroscope, pressure/altitude, power,
+and GPS, and a test suite covering the backend logic.
 
 ## How to run the program
 
